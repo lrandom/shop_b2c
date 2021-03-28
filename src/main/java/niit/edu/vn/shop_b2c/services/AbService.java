@@ -44,6 +44,16 @@ public class AbService<T, R extends PagingAndSortingRepository> {
         return pagingResult;
     }
 
+    public ArrayList<T> getAll(){
+        ArrayList list = new ArrayList<T>();
+        Iterable it = repo.findAll();
+        for (Object role : it
+        ) {
+            list.add((T) role);
+        }
+        return list;
+    }
+
 
     @Data
     public class PagingResult{
@@ -56,5 +66,7 @@ public class AbService<T, R extends PagingAndSortingRepository> {
             this.list = list;
             this.activePage = activePage;
         }
+
+
     }
 }

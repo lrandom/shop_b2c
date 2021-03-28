@@ -16,15 +16,15 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("/admin/role")
-public class RoleController implements IAdminController {
+public class RoleController implements IAdminController<Role>{
     @Autowired
     RoleService roleService;
 
     @Override
     @GetMapping("")
     public String list(Model model, @RequestParam(name = "page", defaultValue = "1") int page) {
-        AbService.PagingResult pagingResult = roleService.getService().getPaginate(page);
-        model.addAttribute("pagingResult", pagingResult);
+        AbService.PagingResult pageResult = roleService.getService().getPaginate(page);
+        model.addAttribute("pageResult", pageResult);
         return "admin/role/list";
     }
 
