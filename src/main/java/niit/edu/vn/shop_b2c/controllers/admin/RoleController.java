@@ -1,6 +1,7 @@
 package niit.edu.vn.shop_b2c.controllers.admin;
 
 import niit.edu.vn.shop_b2c.models.Role;
+import niit.edu.vn.shop_b2c.services.AbService;
 import niit.edu.vn.shop_b2c.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+
 @Controller
 @RequestMapping("/admin/role")
 public class RoleController implements IAdminController {
@@ -18,8 +21,9 @@ public class RoleController implements IAdminController {
     RoleService roleService;
 
     @Override
-    public String list(Model model) {
-
+    public String list(Model model, @RequestParam(name = "page", defaultValue = "1") int page) {
+        AbService.PagingResult pagingResult = roleService.getService().getPaginate(page);
+        model.addAttribute("pagingResult", pagingResult);
         return null;
     }
 
@@ -58,7 +62,7 @@ public class RoleController implements IAdminController {
             redirectAttributes.addFlashAttribute("error", "Sửa thất bại");
         }
 
-        return "redirect:/admin/role/edit?id"+role.getId();
+        return "redirect:/admin/role/edit?id" + role.getId();
     }
 
     @Override

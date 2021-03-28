@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 public interface IAdminController {
-    public String list(Model model);
+    public String list(Model model, int page);
     public String add(Model model);
     public String edit(Model model, Long id);
     public String doAdd(Role role, RedirectAttributes redirectAttributes);

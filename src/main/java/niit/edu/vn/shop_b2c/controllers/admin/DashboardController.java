@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/admin")
 public class DashboardController {
-
     @GetMapping("/layout")
      public String getLayout(){
          return "admin/layout";
