@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout.html}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+    <!--NOI DUNG O DAY-->
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Add Role</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form th:action="@{/admin/role/do-add}" method="post" th:object="${obj}">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Role Name</label>
+                            <input type="text" th:field="*{name}" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Role Code</label>
+                            <input type="text" th:field="*{code}" class="form-control">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--END MAIN CONTENT-->
+</div>
+</body>
+</html>
