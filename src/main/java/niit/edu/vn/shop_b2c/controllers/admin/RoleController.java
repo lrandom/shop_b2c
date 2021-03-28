@@ -21,10 +21,11 @@ public class RoleController implements IAdminController {
     RoleService roleService;
 
     @Override
+    @GetMapping("")
     public String list(Model model, @RequestParam(name = "page", defaultValue = "1") int page) {
         AbService.PagingResult pagingResult = roleService.getService().getPaginate(page);
         model.addAttribute("pagingResult", pagingResult);
-        return null;
+        return "admin/role/list";
     }
 
     @Override
